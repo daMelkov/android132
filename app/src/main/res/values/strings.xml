@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">MelkovHw132</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="registration">registration</string>
+    <string name="enter_data">Введите логин и пароль</string>
+    <string name="logon_success">Авторизация прошла успешно!</string>
+    <string name="logon_fail">Учётные данные не найдены</string>
+    <string name="registration_success">Регистрация прошла успешно</string>
+    <string name="registration_fail">Учётная запись уже существует</string>
+    <string name="save_in_outer_file">Хранить учётные данные по внешнем файле</string>
 </resources>
