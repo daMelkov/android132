@@ -26,9 +26,6 @@ public class MainActivity extends AppCompatActivity {
         // init UI widgets
         initViews();
 
-        // init file with login and password
-        initData();
-
         // preferences (storage type)
         initPreferences();
     }
@@ -36,10 +33,6 @@ public class MainActivity extends AppCompatActivity {
     private void initPreferences() {
         preferences = getPreferences(MODE_PRIVATE);
         storageType.setChecked(preferences.getBoolean(STORAGE_TYPE, false));
-    }
-
-    private void initData() {
-        Data.addData(MainActivity.this, "", "", true);
     }
 
     private void initViews() {
@@ -81,10 +74,10 @@ public class MainActivity extends AppCompatActivity {
                 String password = edtPassword.getText().toString().trim();
 
                 // check: login not existsdenis
-                if(!Data.checkExists(MainActivity.this, login)) {
+                if(!Data.checkExists(MainActivity.this, login, !storageType.isChecked())) {
 
                     // registration success
-                    Data.addData(MainActivity.this, login, password, false);
+                    Data.addData(MainActivity.this, login, password, !storageType.isChecked());
                     Toast.makeText(MainActivity.this,
                             R.string.registration_success,
                             Toast.LENGTH_SHORT).show();
@@ -109,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        if(Data.checkExists(MainActivity.this, login, password)) {
+        if(Data.checkExists(MainActivity.this, login, password, !storageType.isChecked())) {
             Toast.makeText(MainActivity.this,
                     R.string.logon_success,
                     Toast.LENGTH_SHORT).show();
